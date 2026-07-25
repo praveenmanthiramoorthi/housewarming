@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="You're warmly invited to our Griha Pravesh — House Warming Ceremony. Join us in blessing our new home!" />
+  <meta name="theme-color" content="#7B1E2A" />
+  <title>Griha Pravesh — House Warming Invitation</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       1. LANDING / WELCOME SCREEN
+  ══════════════════════════════════════════════ -->
+  <section id="welcome" class="welcome" aria-label="Welcome screen">
+    <!-- Decorative rangoli corners -->
+    <div class="rangoli rangoli--tl" aria-hidden="true"></div>
+    <div class="rangoli rangoli--br" aria-hidden="true"></div>
+
+    <div class="welcome__content">
+      <p class="welcome__om" aria-hidden="true">❤️</p>
+      <h1 id="welcome-heading" class="welcome__heading"></h1>
+      <p id="welcome-subtitle" class="welcome__subtitle"></p>
+
+      <ul id="names-list" class="welcome__names" aria-label="Family members"></ul>
+
+      <button id="btn-light" class="welcome__cta" type="button">
+        Tap to light the lamp 🪔
+      </button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       2. DIYA LIGHTING ANIMATION OVERLAY
+  ══════════════════════════════════════════════ -->
+  <div id="diya-overlay" class="diya-overlay" aria-label="Diya lighting animation" aria-hidden="true">
+    <svg class="diya-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Diya (oil lamp) base -->
+      <g class="diya-lamp">
+        <!-- Diya bowl -->
+        <ellipse cx="150" cy="310" rx="60" ry="14" fill="#8B4513" />
+        <path d="M90 310 Q90 270 110 265 L190 265 Q210 270 210 310 Z" fill="#CD853F" />
+        <ellipse cx="150" cy="265" rx="40" ry="8" fill="#DEB887" />
+        <!-- Wick -->
+        <rect class="diya-wick" x="147" y="240" width="6" height="28" rx="3" fill="#4A3728" />
+      </g>
+
+      <!-- Matchstick -->
+      <g class="matchstick">
+        <rect x="0" y="-4" width="70" height="6" rx="2" fill="#D2B48C" />
+        <ellipse cx="70" cy="-1" rx="8" ry="10" fill="#C0392B" />
+        <!-- Match flame (appears on strike) -->
+        <g class="match-flame">
+          <ellipse cx="70" cy="-16" rx="6" ry="12" fill="#FFA500" opacity="0.9" />
+          <ellipse cx="70" cy="-20" rx="4" ry="8" fill="#FFD700" opacity="0.8" />
+          <ellipse cx="70" cy="-22" rx="2" ry="5" fill="#FFF8DC" opacity="0.9" />
+        </g>
+      </g>
+
+      <!-- Diya flame (appears after lighting) -->
+      <g class="diya-flame" opacity="0">
+        <ellipse cx="150" cy="216" rx="12" ry="28" fill="#FF8C00" class="flame-outer">
+          <animate attributeName="rx" values="12;14;11;13;12" dur="0.6s" repeatCount="indefinite" />
+          <animate attributeName="ry" values="28;32;26;30;28" dur="0.7s" repeatCount="indefinite" />
+        </ellipse>
+        <ellipse cx="150" cy="220" rx="7" ry="18" fill="#FFD700" class="flame-mid">
+          <animate attributeName="rx" values="7;9;6;8;7" dur="0.5s" repeatCount="indefinite" />
+          <animate attributeName="ry" values="18;22;16;20;18" dur="0.6s" repeatCount="indefinite" />
+        </ellipse>
+        <ellipse cx="150" cy="224" rx="4" ry="10" fill="#FFFACD" class="flame-inner">
+          <animate attributeName="rx" values="4;5;3;4.5;4" dur="0.4s" repeatCount="indefinite" />
+          <animate attributeName="ry" values="10;13;9;11;10" dur="0.5s" repeatCount="indefinite" />
+        </ellipse>
+        <!-- Glow -->
+        <circle cx="150" cy="230" r="50" fill="url(#flame-glow)" class="flame-glow-circle" />
+      </g>
+
+      <defs>
+        <radialGradient id="flame-glow" cx="50%" cy="40%" r="50%">
+          <stop offset="0%" stop-color="#FFD700" stop-opacity="0.4" />
+          <stop offset="60%" stop-color="#FF8C00" stop-opacity="0.15" />
+          <stop offset="100%" stop-color="#FF8C00" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+    </svg>
+
+    <!-- Warm screen glow that brightens -->
+    <div class="diya-glow-bg"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       3. AUDIO CONTROL (floating, always visible after landing)
+  ══════════════════════════════════════════════ -->
+  <button id="btn-audio" class="audio-toggle" type="button" aria-label="Mute background music" hidden>
+    <svg class="audio-icon audio-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+    </svg>
+    <svg class="audio-icon audio-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+  </button>
+
+  <!-- Background audio element -->
+  <audio id="bgm" loop preload="none">
+    <source src="assets/bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ══════════════════════════════════════════════
+       4. MAIN INVITATION CONTENT
+  ══════════════════════════════════════════════ -->
+  <main id="invitation" class="invitation" hidden>
+
+    <!-- Hanging Festive Toran (Mango Leaves & Marigold Garland) -->
+    <div class="toran" aria-hidden="true">
+      <svg class="toran-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main Hanging Thread -->
+        <path d="M0,15 Q300,55 600,15 Q900,55 1200,15" fill="none" stroke="#D4A843" stroke-width="3" />
+        <path d="M0,25 Q300,65 600,25 Q900,65 1200,25" fill="none" stroke="#C0603E" stroke-width="2" stroke-dasharray="6,4" />
+
+        <!-- Mango Leaves & Marigold Flowers Hanging Loops -->
+        <!-- Loop 1 -->
+        <g class="toran-group toran-swing-1">
+          <path d="M100,25 Q90,75 100,105 Q110,75 100,25" fill="#2E7D32" />
+          <circle cx="100" cy="30" r="8" fill="#FF9800" />
+          <circle cx="100" cy="30" r="5" fill="#FFEB3B" />
+        </g>
+        <g class="toran-group toran-swing-2">
+          <path d="M200,32 Q190,82 200,112 Q210,82 200,32" fill="#388E3C" />
+          <circle cx="200" cy="37" r="9" fill="#E65100" />
+          <circle cx="200" cy="37" r="5" fill="#FFC107" />
+        </g>
+        <g class="toran-group toran-swing-3">
+          <path d="M300,38 Q290,88 300,118 Q310,88 300,38" fill="#2E7D32" />
+          <circle cx="300" cy="43" r="8" fill="#FF9800" />
+        </g>
+        <g class="toran-group toran-swing-1">
+          <path d="M400,32 Q390,82 400,112 Q410,82 400,32" fill="#388E3C" />
+          <circle cx="400" cy="37" r="9" fill="#E65100" />
+        </g>
+        <g class="toran-group toran-swing-2">
+          <path d="M500,25 Q490,75 500,105 Q510,75 500,25" fill="#2E7D32" />
+          <circle cx="500" cy="30" r="8" fill="#FF9800" />
+        </g>
+        <g class="toran-group toran-swing-3">
+          <path d="M600,15 Q590,65 600,95 Q610,65 600,15" fill="#1B5E20" />
+          <circle cx="600" cy="20" r="10" fill="#FFC107" />
+          <circle cx="600" cy="20" r="6" fill="#DD2C00" />
+        </g>
+        <g class="toran-group toran-swing-1">
+          <path d="M700,25 Q690,75 700,105 Q710,75 700,25" fill="#2E7D32" />
+          <circle cx="700" cy="30" r="8" fill="#FF9800" />
+        </g>
+        <g class="toran-group toran-swing-2">
+          <path d="M800,32 Q790,82 800,112 Q810,82 800,32" fill="#388E3C" />
+          <circle cx="800" cy="37" r="9" fill="#E65100" />
+        </g>
+        <g class="toran-group toran-swing-3">
+          <path d="M900,38 Q890,88 900,118 Q910,88 900,38" fill="#2E7D32" />
+          <circle cx="900" cy="43" r="8" fill="#FF9800" />
+        </g>
+        <g class="toran-group toran-swing-1">
+          <path d="M1000,32 Q990,82 1000,112 Q1010,82 1000,32" fill="#388E3C" />
+          <circle cx="1000" cy="37" r="9" fill="#E65100" />
+        </g>
+        <g class="toran-group toran-swing-2">
+          <path d="M1100,25 Q1090,75 1100,105 Q1110,75 1100,25" fill="#2E7D32" />
+          <circle cx="1100" cy="30" r="8" fill="#FF9800" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Falling Rose Petals Canvas -->
+    <canvas id="petals-canvas" class="petals-canvas" aria-hidden="true"></canvas>
+
+    <!-- Decorative top border -->
+    <div class="invitation__border-top" aria-hidden="true"></div>
+
+    <!-- Event Details Card -->
+    <section class="invitation__card" aria-label="Event details">
+      <div class="invitation__card-inner">
+        <p class="invitation__shubh" aria-hidden="true">॥ நல்வரவு ॥</p>
+        <h2 id="event-title" class="invitation__event-title"></h2>
+
+        <div class="invitation__divider" aria-hidden="true">
+          <span>🪔</span>
+        </div>
+
+        <div class="invitation__details">
+          <div class="invitation__detail">
+            <svg class="invitation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span id="event-date"></span>
+          </div>
+          <div class="invitation__detail">
+            <svg class="invitation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span id="event-time"></span>
+          </div>
+        </div>
+
+        <a id="btn-calendar" class="invitation__calendar-btn" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <line x1="12" y1="14" x2="12" y2="18"></line>
+            <line x1="10" y1="16" x2="14" y2="16"></line>
+          </svg>
+          Add to Google Calendar
+        </a>
+
+        <p class="invitation__message">
+          We warmly invite you and eagerly expect your gracious presence to bless our new home!
+        </p>
+
+        <div class="invitation__divider invitation__divider--small" aria-hidden="true">
+          <span>✦</span>
+        </div>
+
+        <p class="invitation__hosted" id="hosted-by"></p>
+      </div>
+    </section>
+
+    <!-- Floating Scroll Indicator -->
+    <div id="scroll-indicator" class="scroll-indicator" aria-hidden="true">
+      <span>Scroll for details</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+      </svg>
+    </div>
+
+    <!-- Family Photo -->
+    <section class="invitation__photo-section" aria-label="Family photo">
+      <div class="invitation__photo-card">
+        <img id="family-photo" src="assets/family-photo.jpg" alt="Our family" class="invitation__photo" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         5. LOCATION SECTION
+    ══════════════════════════════════════════════ -->
+    <section class="location" aria-label="Location and directions">
+      <h2 class="location__heading">Location & Directions</h2>
+
+      <p id="full-address" class="location__address"></p>
+
+      <a id="directions-link" class="location__directions-btn" href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="20" height="20">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        Open in Google Maps
+      </a>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         6. FOOTER
+    ══════════════════════════════════════════════ -->
+    <footer class="footer">
+      <p class="footer__closing">We can't wait to celebrate with you! ❤️</p>
+      <p class="footer__contact" id="footer-contact"></p>
+      <p class="footer__made">Made with love & warmth</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

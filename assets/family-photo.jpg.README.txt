@@ -1,0 +1,9 @@
+This is a placeholder file.
+
+Replace this with your actual family or house photo (JPEG format).
+
+Ideal specifications:
+  - Format: JPEG
+  - Aspect ratio: 4:3 (landscape) — works best with the card layout
+  - Resolution: 1200x900px is plenty for web
+  - File size: under 500 KB (compress with TinyJPG or Squoosh)

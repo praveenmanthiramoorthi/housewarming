@@ -1,0 +1,11 @@
+This is a placeholder file.
+
+Replace this with your actual background music file (MP3 format).
+Keep it short (30-60 seconds) for a lightweight loop, or use a longer
+instrumental track. Recommended: soft bhajan, shehnai, or sitar music.
+
+Ideal specifications:
+  - Format: MP3
+  - Bitrate: 128 kbps (good quality, small size)
+  - Duration: 30-90 seconds (will loop)
+  - File size: under 2 MB for fast loading
