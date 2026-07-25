@@ -65,6 +65,7 @@ const eventTime        = $('#event-time');
 const hostedBy         = $('#hosted-by');
 const familyPhoto      = $('#family-photo');
 const fullAddress      = $('#full-address');
+const directionsLink   = $('#directions-link');
 const btnCalendar     = $('#btn-calendar');
 const scrollIndicator = $('#scroll-indicator');
 
